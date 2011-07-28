@@ -36,3 +36,13 @@ function! whitespacetrail#RemoveTrailingWhitespace( offset )
     let l:lastline = line(".") + a:offset
     call setline(l:lastline, substitute(getline(l:lastline), '\s\+$', '', ''))
 endfunc
+
+function! whitespacetrail#EnterInsertWithIndent()
+    if len(getline('.')) == 0
+        return '"_ddO'
+    else
+        return 'i'
+    endif
+endfunc
+
+"inoremap <expr> <CR> <CR>whitespacetrail#EnterInsertWithIndent()
