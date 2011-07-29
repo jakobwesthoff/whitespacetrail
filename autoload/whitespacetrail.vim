@@ -31,18 +31,11 @@ function! whitespacetrail#ToggleWhitespaceTrail()
     endif
 endfunc
 
-" Thanks to toby@schlitt.info for this little snippet.
+" Thanks to toby@php.net for the initial idea of this little function
 function! whitespacetrail#RemoveTrailingWhitespace( offset )
     let l:lastline = line(".") + a:offset
     call setline(l:lastline, substitute(getline(l:lastline), '\s\+$', '', ''))
+    return ''
 endfunc
 
-function! whitespacetrail#EnterInsertWithIndent()
-    if len(getline('.')) == 0
-        return '"_ddO'
-    else
-        return 'i'
-    endif
-endfunc
-
-"inoremap <expr> <CR> <CR>whitespacetrail#EnterInsertWithIndent()
+inoremap <CR> <CR><C-R>=whitespacetrail#RemoveTrailingWhitespace(-1)<CR>
