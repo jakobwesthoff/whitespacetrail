@@ -38,4 +38,6 @@ function! whitespacetrail#RemoveTrailingWhitespace( offset )
     return ''
 endfunc
 
-inoremap <CR> <CR><C-R>=whitespacetrail#RemoveTrailingWhitespace(-1)<CR>
+" Uncomment the following line (or copy to your vimrc), to enable automatic
+" trailing whitespace removal on pressing <CR>
+" inoremap <CR> <CR><C-R>=whitespacetrail#RemoveTrailingWhitespace(-1)<CR>
